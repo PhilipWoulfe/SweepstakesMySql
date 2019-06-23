@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using SweepstakesAppEngineMySQL.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Pomelo.EntityFrameworkCore;
 
 namespace SweepstakesAppEngineMySQL
 {
@@ -35,7 +36,7 @@ namespace SweepstakesAppEngineMySQL
             });
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
+                options.UseMySql(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
