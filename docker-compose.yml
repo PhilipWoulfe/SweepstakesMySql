@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  sweepstakesappenginemysql:
+    image: ${DOCKER_REGISTRY}sweepstakesappenginemysql
+    build:
+      context: .
+      dockerfile: SweepstakesAppEngineMySQL/Dockerfile
