@@ -70,12 +70,16 @@ namespace SweepstakesAppEngineMySQL
                     Configuration.GetConnectionString("DevLocalConnection")));
             services.AddDefaultIdentity<IdentityUser>(config =>
                 {
-                    //config.SignIn.RequireConfirmedEmail = true;
+                    config.SignIn.RequireConfirmedEmail = true;
                 })
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            //services.AddTransient<IEmailSender, EmailSender>();
-            //services.Configure<AuthMessageSenderOptions>(Configuration);
+           // Bind secrets to Auth Model
+            services.Configure<AuthMessageSenderOptions>(options =>
+                Configuration.GetSection("AuthMessageSenderOptions").Bind(options));
+
+            services.AddTransient<IEmailSender, EmailSender>();
+            services.Configure<AuthMessageSenderOptions>(Configuration);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

@@ -22,20 +22,26 @@ namespace SweepstakesAppEngineMySQL.Services
 
         public Task SendEmailAsync(string email, string subject, string message)
         {
-            return Execute(Options.MailgunKey, subject, message, email);
+            return Execute(Options.MailgunKey, Options.BaseURL, Options.DomainName, subject, message, email);
         }
 
-        public Task Execute(string apiKey, string subject, string message, string email)
+        public Task Execute(string apiKey, string url, string domain, string subject, string message, string email)
         {
-            var client = new RestClient();
-            client.BaseUrl = new Uri("https://api.mailgun.net/v3");
-            client.Authenticator = 
-                new HttpBasicAuthenticator("api", apiKey);
-            
+            var client = new RestClient
+            {
+                BaseUrl = new Uri(url + "/messages"),
+                Authenticator =
+                new HttpBasicAuthenticator("api", apiKey)
+            };
+
+            //client.BaseUrl = new Uri("https://api.mailgun.net/v3");
+            //client.Authenticator =
+            //    new HttpBasicAuthenticator("api", apiKey);
+
             var request = new RestRequest();
-            request.AddParameter("domain", "philipwoulfe.app", ParameterType.UrlSegment);
-            request.Resource = "{domain}/messages";
-            request.AddParameter("from", "Excited User <mailgun@philipwoulfe.app>");
+            request.AddParameter("domain", domain, ParameterType.UrlSegment);
+            //request.Resource = "{domain}/messages";
+            request.AddParameter("from", "Excited User <noreply@" + domain + ">");
             request.AddParameter("to", email);
             request.AddParameter("subject", subject);
             request.AddParameter("text", message);
