@@ -1,5 +1,4 @@
-﻿@using SweepstakesAppEngineMySQL.Areas.Identity.Data
-@inject SignInManager<SweepstakesAppEngineMySQLUser> SignInManager
+﻿@inject SignInManager<IdentityUser> SignInManager
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
 }

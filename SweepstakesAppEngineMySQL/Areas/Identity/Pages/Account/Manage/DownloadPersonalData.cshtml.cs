@@ -8,17 +8,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using SweepstakesAppEngineMySQL.Areas.Identity.Data;
+//using SweepstakesAppEngineMySQL.Areas.Identity.Data;
 
 namespace SweepstakesAppEngineMySQL.Areas.Identity.Pages.Account.Manage
 {
     public class DownloadPersonalDataModel : PageModel
     {
-        private readonly UserManager<SweepstakesAppEngineMySQLUser> _userManager;
+        private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<DownloadPersonalDataModel> _logger;
 
         public DownloadPersonalDataModel(
-            UserManager<SweepstakesAppEngineMySQLUser> userManager,
+            UserManager<IdentityUser> userManager,
             ILogger<DownloadPersonalDataModel> logger)
         {
             _userManager = userManager;
@@ -37,7 +37,7 @@ namespace SweepstakesAppEngineMySQL.Areas.Identity.Pages.Account.Manage
 
             // Only include personal data for download
             var personalData = new Dictionary<string, string>();
-            var personalDataProps = typeof(SweepstakesAppEngineMySQLUser).GetProperties().Where(
+            var personalDataProps = typeof(IdentityUser).GetProperties().Where(
                             prop => Attribute.IsDefined(prop, typeof(PersonalDataAttribute)));
             foreach (var p in personalDataProps)
             {

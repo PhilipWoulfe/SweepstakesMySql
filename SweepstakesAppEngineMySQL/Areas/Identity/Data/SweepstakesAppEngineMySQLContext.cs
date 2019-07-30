@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using SweepstakesAppEngineMySQL.Areas.Identity.Data;
+//using SweepstakesAppEngineMySQL.Areas.Identity.Data;
 
 namespace SweepstakesAppEngineMySQL.Models
 {
-    public class SweepstakesAppEngineMySQLContext : IdentityDbContext<SweepstakesAppEngineMySQLUser>
+    public class SweepstakesAppEngineMySQLContext : IdentityDbContext<IdentityUser>
     {
         public SweepstakesAppEngineMySQLContext(DbContextOptions<SweepstakesAppEngineMySQLContext> options)
             : base(options)

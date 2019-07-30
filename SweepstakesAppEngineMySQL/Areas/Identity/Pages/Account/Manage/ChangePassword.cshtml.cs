@@ -7,18 +7,18 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using SweepstakesAppEngineMySQL.Areas.Identity.Data;
+//using SweepstakesAppEngineMySQL.Areas.Identity.Data;
 namespace SweepstakesAppEngineMySQL.Areas.Identity.Pages.Account.Manage
 {
     public class ChangePasswordModel : PageModel
     {
-        private readonly UserManager<SweepstakesAppEngineMySQLUser> _userManager;
-        private readonly SignInManager<SweepstakesAppEngineMySQLUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
         private readonly ILogger<ChangePasswordModel> _logger;
 
         public ChangePasswordModel(
-            UserManager<SweepstakesAppEngineMySQLUser> userManager,
-            SignInManager<SweepstakesAppEngineMySQLUser> signInManager,
+            UserManager<IdentityUser> userManager,
+            SignInManager<IdentityUser> signInManager,
             ILogger<ChangePasswordModel> logger)
         {
             _userManager = userManager;

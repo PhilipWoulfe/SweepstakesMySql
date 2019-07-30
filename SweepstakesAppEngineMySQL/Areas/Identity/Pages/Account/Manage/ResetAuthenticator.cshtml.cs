@@ -6,19 +6,19 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using SweepstakesAppEngineMySQL.Areas.Identity.Data;
+//using SweepstakesAppEngineMySQL.Areas.Identity.Data;
 
 namespace SweepstakesAppEngineMySQL.Areas.Identity.Pages.Account.Manage
 {
     public class ResetAuthenticatorModel : PageModel
     {
-        UserManager<SweepstakesAppEngineMySQLUser> _userManager;
-        private readonly SignInManager<SweepstakesAppEngineMySQLUser> _signInManager;
+        UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
         ILogger<ResetAuthenticatorModel> _logger;
 
         public ResetAuthenticatorModel(
-            UserManager<SweepstakesAppEngineMySQLUser> userManager,
-            SignInManager<SweepstakesAppEngineMySQLUser> signInManager,
+            UserManager<IdentityUser> userManager,
+            SignInManager<IdentityUser> signInManager,
             ILogger<ResetAuthenticatorModel> logger)
         {
             _userManager = userManager;
