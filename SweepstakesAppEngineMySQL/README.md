@@ -1,3 +1,22 @@
+proxy needs to run to connect ti gcp cloud sql
+currently using whitelisted ip]may change
+
+proxy details
+https://cloud.google.com/dotnet/docs/getting-started/using-cloud-sql
+
+Kubernetes?
+
+can i run a standard compute engine with iis and db on the sam box?
+
+cloud sql for .net app engine
+https://cloud.google.com/appengine/docs/flexible/dotnet/using-cloud-sql
+
+ASP.Net Ttorial
+https://app.pluralsight.com/player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m1-introduction&mode=live&clip=1&course=aspdotnet-mvc5-fundamentals
+
+Sweepstakes Linux for migration template
+
+
 MY SQL
 For MySQl Migrations, you need to use Pomelo ENtityframeworkCore MySql instead of Oracle as the defauls uses massive PK's
 
@@ -5,9 +24,7 @@ GCP App Engine
 App Engine needs the App Engine Admin API to allow publishing from VS
 
 Connection strings
-    //"DefaultConnection": "Datasource=localhost;Database=sweepstakes;Uid=Admin;Pwd=bsw8KFRB4Urt;" // Phil Local
-    "DefaultConnection": "Server=35.231.70.34;Database=sweepstakes;Uid=Snarflegar;Pwd=4SPv6AHeqjA9" // Cloud Dev (this must be whitelisted)
-	"Server=127.0.0.1;Port=3307;Database=sweepstakes;Uid=Snarflegar;Pwd=U8ag62kEK5Pg" // CLoud dev through proxy
+
 	
 
 CLoud SQL Proxy

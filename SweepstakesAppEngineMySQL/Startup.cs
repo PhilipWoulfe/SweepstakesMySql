@@ -67,7 +67,7 @@ namespace SweepstakesAppEngineMySQL
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseMySql(
-                    Configuration.GetConnectionString("DevCloudConnection")));
+                    Configuration.GetConnectionString("LiveConnectionPublic")));
             services.AddDefaultIdentity<IdentityUser>(config =>
                 {
                     config.SignIn.RequireConfirmedEmail = true;
