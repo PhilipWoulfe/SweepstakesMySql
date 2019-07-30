@@ -17,6 +17,8 @@ using Pomelo.EntityFrameworkCore;
 using Microsoft.AspNetCore.DataProtection;
 using Google.Cloud.AspNetCore.DataProtection.Kms;
 using Google.Cloud.AspNetCore.DataProtection.Storage;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using SweepstakesAppEngineMySQL.Services;
 
 namespace SweepstakesAppEngineMySQL
 {
@@ -65,9 +67,19 @@ namespace SweepstakesAppEngineMySQL
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseMySql(
-                    Configuration.GetConnectionString("LiveConnectionPrivate")));
-            services.AddDefaultIdentity<IdentityUser>()
+                    Configuration.GetConnectionString("DevCloudConnection")));
+            services.AddDefaultIdentity<IdentityUser>(config =>
+                {
+                    config.SignIn.RequireConfirmedEmail = true;
+                })
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+           // Bind secrets to Auth Model
+            services.Configure<AuthMessageSenderOptions>(options =>
+                Configuration.GetSection("AuthMessageSenderOptions").Bind(options));
+
+            services.AddTransient<IEmailSender, EmailSender>();
+            services.Configure<AuthMessageSenderOptions>(Configuration);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
