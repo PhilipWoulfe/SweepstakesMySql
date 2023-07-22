@@ -16,7 +16,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" PrivateAssets="All" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.1.4" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql.Design" Version="1.1.2" />
-    <PackageReference Include="RestSharp" Version="106.6.9" />
+    <PackageReference Include="RestSharp" Version="106.12.0" />
 	<None Update="appsecrets.json.encrypted" CopyToOutputDirectory="PreserveNewest" />
     <None Update="appsecrets.json.keyname" CopyToOutputDirectory="PreserveNewest" />
     <Content Remove="appsecrets.json" />
